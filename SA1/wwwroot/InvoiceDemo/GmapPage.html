@@ -1,0 +1,43 @@
+﻿<template>
+    <template is="dom-bind">
+        <section>
+            <style>
+                google-map {
+                    height: 400px;
+                }
+            </style>
+
+            <google-map map="{{map}}"
+                        latitude="37.77493"
+                        longitude="-122.41942"
+                        api-key="AIzaSyDPkEs-_HJWKejZ5qLXTmXXfVFnAXJmnt0">
+                <template is="dom-repeat" items="{{model.Sener}}">
+                    <google-map-marker latitude="{{item.Lat}}"
+                                       longitude="{{item.Lng}}"
+                                       title="{{item.Inf}}">
+                    </google-map-marker>
+                </template>
+
+                <google-map-poly stroke-weight="1">
+                    <template is="dom-repeat" items="{{model.Sener}}">
+                        <google-map-point latitude="{{item.Lat}}"
+                                          longitude="{{item.Lng}}">
+                        </google-map-point>
+                    </template>
+                </google-map-poly>
+            </google-map>
+
+            <google-map-directions map={{map}}
+                                   start-address="37.779,-122.3892"
+                                   end-address="37.804,-122.2711"
+                                   api-key="AIzaSyDPkEs-_HJWKejZ5qLXTmXXfVFnAXJmnt0">
+            </google-map-directions>
+            <google-map-directions map={{map}}
+                                   end-address="37.386,-122.0837"
+                                   api-key="AIzaSyDPkEs-_HJWKejZ5qLXTmXXfVFnAXJmnt0">
+            </google-map-directions>
+
+        </section>
+
+    </template>
+</template>
