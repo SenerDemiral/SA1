@@ -1,9 +1,11 @@
 ﻿using Starcounter;
 
 [Database]
-public class Gmap {
+public class Gmap
+{
     public string Lat;
     public string Lng;
+    public string Inf;
 }
 
 [Database]

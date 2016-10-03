@@ -24,66 +24,57 @@ namespace SA1 {
             Application.Current.Use(new PartialToStandaloneHtmlProvider());
 
             Handle.GET("/invoicedemo", () => {
-            MasterPage master;
-            if (Session.Current != null) {
-                master = (MasterPage)Session.Current.Data;
-            } else {
-                master = new MasterPage() {
-                    Html = "/InvoiceDemo/MasterPage.html"
-                };
-                master.Session = new Session(SessionOptions.PatchVersioning);
-                master.RecentInvoices = new InvoicesPage() {
-                    Html = "/InvoiceDemo/InvoicesPage.html"
-                };
-            }
+                MasterPage master;
+                if (Session.Current != null) {
+                    master = (MasterPage)Session.Current.Data;
+                } else {
+                    master = new MasterPage() {
+                        Html = "/InvoiceDemo/MasterPage.html"
+                    };
+                    master.Session = new Session(SessionOptions.PatchVersioning);
+                    master.RecentInvoices = new InvoicesPage() {
+                       Html = "/InvoiceDemo/InvoicesPage.html"
+                    };
+                }
 
                 ((InvoicesPage)master.RecentInvoices).RefreshData();
-            master.FocusedInvoice = null;
+                master.FocusedInvoice = null;
 
-            //master.Sener.Add({ "Latitude": "12.345"});
-            master.Latitude = "12.345";
-                //Json jj = { "aaa": "bbb"};
-
-                //var json = new aa<SenerElementJsonSener>() {
-                //    Latitude = "Albert",
-                //    Longitude = "Einstein"
-                //};
-
-                master.Sener.Add(new MasterPage.SenerElementJson() { Lat = "37.779", Lng = "-122.3892", Inf = "AAAA" });
-                master.Sener.Add(new MasterPage.SenerElementJson() { Lat = "37.804", Lng = "-122.2711", Inf = "BBBB" });
-                master.Sener.Add(new MasterPage.SenerElementJson() {Lat = "37.386", Lng = "-122.0837", Inf = "CCCC" });
-
-                //master.Sener.Add().Latitude = "37.779";
-                //master.Sener.Add().Longitude = "-122.3892";
-
-                //master.Sener.Add().Latitude = "11.779";
-                //master.Sener.Add().Longitude = "22.3892";
-
-                var aaa = master.Sener.Count;
-
-                return master;
-            });
-
-            Handle.GET("/invoicedemo/gmap", () => {
-                MasterPage master = Self.GET<MasterPage>("/invoicedemo");
+                // Static
+                // It's better if using Handle.GET("/invoicedemo/gmap", ...)
                 master.GmapHtml = Db.Scope<GmapPage>(() => {
                     var page = new GmapPage() {
-                        Html = "/InvoiceDemo/GmapPage.html",
-                        Data = new Gmap()
+                        Html = "/InvoiceDemo/GmapPage.html"
                     };
+                    page.Sener = Db.SQL<Gmap>("SELECT i FROM Gmap i");
 
                     return page;
                 });
-                ((GmapPage)master.GmapHtml).RefreshData();
-
-                master.Sener.Add(new MasterPage.SenerElementJson() { Lat = "37.779", Lng = "-122.3892", Inf = "AAAA" });
-                master.Sener.Add(new MasterPage.SenerElementJson() { Lat = "37.804", Lng = "-122.2711", Inf = "BBBB" });
-                master.Sener.Add(new MasterPage.SenerElementJson() { Lat = "37.386", Lng = "-122.0837", Inf = "CCCC" });
 
                 return master;
             });
+//---------------------------------------------------------
+            Handle.GET("/invoicedemo/gmap", () => 
+            {
+                MasterPage master = Self.GET<MasterPage>("/invoicedemo");
 
-            Handle.GET("/invoicedemo/new-invoice", () => {
+                master.GmapHtml = Db.Scope<GmapPage>(() => 
+                {
+                    var page = new GmapPage() {
+                        Html = "/InvoiceDemo/GmapPage.html"
+                    };
+                    page.Sener = Db.SQL<Gmap>("SELECT i FROM Gmap i");
+
+                    return page;
+                });
+
+               //((GmapPage)master.GmapHtml).RefreshData(); //Static data, no need refresh
+
+                return master;
+            });
+//---------------------------------------------------------
+            Handle.GET("/invoicedemo/new-invoice", () => 
+            {
                 MasterPage master = Self.GET<MasterPage>("/invoicedemo");
                 master.FocusedInvoice = Db.Scope<InvoicePage>(() => {
                     var page = new InvoicePage() {
@@ -126,13 +117,22 @@ namespace SA1 {
 
                 new Gmap() {
                     Lat = "37.779",
-                    Lng = "-122.3892"
+                    Lng = "-122.3892",
+                    Inf = "A1"
                 };
 
                 new Gmap() {
                     Lat = "37.804",
-                    Lng = "-122.2711"
+                    Lng = "-122.2711",
+                    Inf = "B2"
                 };
+
+                new Gmap() {
+                    Lat = "37.386",
+                    Lng = "-122.0837",
+                    Inf = "C3"
+                };
+
             });
 
 
