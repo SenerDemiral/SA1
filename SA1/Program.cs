@@ -120,8 +120,7 @@ namespace SA1 {
                 });
                 return master;
             });
-
-
+            
             Db.Transact(() => {
                 Db.SlowSQL("DELETE FROM Gmap");
 
