@@ -33,6 +33,7 @@
         <ul class="invoicedemo menu">
             <li><a href="/invoicedemo">Home</a></li>
             <li><a href="/invoicedemo/new-invoice">New Invoice</a></li>
+            <li><a href="/invoicedemo/signio">SignI/O</a></li>
         </ul>
 
         <section class="invoicedemo panes">
@@ -77,8 +78,38 @@
             </section>
 
         </section>
-        <div>GoogleMap</div>
+        <!--
+        <template is="dom-if" if="{{model.siVisible}}" restamp>
+            <paper-dialog id="actions" opened="{{model.siVisible}}" modal="false">
+                <starcounter-include partial="{{model.SignIO}}"></starcounter-include>
+            </paper-dialog>
+        </template>
+        -->
+        <section class="invoicedemo">
+            <!-- start right pane of the UI -->
+            <!--
+            <template is="dom-if" if="{{model.siv}}" restamp> 
+            -->
+                <starcounter-include partial="{{model.SignIO}}"></starcounter-include>
+            <!--
+            </template>
+            -->
+            <!-- end right pane of the UI -->
+        </section>
+
+        <section class="invoicedemo" style="height: 400px; width: 400px">
+            <div>GoogleMap</div>
+            <!--
         <starcounter-include partial="{{model.GmapHtml}}"></starcounter-include>
+        -->
+        </section>
+
+        <script>
+            document.querySelector('puppet-client').obj.sii = "CAN";
+            let sener = document.querySelector('puppet-client').obj;
+            console.log("model", this.model);
+            sener.sener = "SENER";
+        </script>
     </template>
 
     <!-- Plug in client-server sync -->

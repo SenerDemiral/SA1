@@ -4,9 +4,9 @@ namespace SA1
 {
     partial class InvoicesPage : Page
     {
-        public void RefreshData()
-        {
+        public void RefreshData() {
             Invoices = Db.SQL("SELECT i FROM Invoice i");
+         
         }
 
         // This attribute indicates which part of JSON tree 

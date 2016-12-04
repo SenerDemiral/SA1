@@ -1,0 +1,27 @@
+﻿<link rel="import" href="/sys/paper-dialog/paper-dialog.html">
+
+<!-- Every node from this template, will be stamped, with view-model
+attached to `model` property -->
+<template>
+    
+    
+    <!-- Consume this model in Polymer's autobinding element -->
+    <template is="dom-bind">
+        <paper-dialog id="actions" opened="{{model.siv}}" modal="false">
+            <div class="subtitle">
+                <label>User name</label>
+                <input type="text" value="{{model.sin$::change}}" />
+                <label>User password</label>
+                <input type="text" value="{{model.sip$::change}}" />
+            </div>
+
+            <div>
+                <!-- Trigger button handlers on click -->
+                <button value="{{model.sic$::click}}" onmousedown="++this.value">Sign-in</button>
+                <button value="{{model.soc$::click}}" onmousedown="++this.value">Sign-out</button>
+            </div>
+
+            <link is="puppet-redirect" history url$="{{model.RedirectUrl$}}">
+        </paper-dialog>
+</template>
+</template>

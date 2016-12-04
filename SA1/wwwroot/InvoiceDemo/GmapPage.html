@@ -1,6 +1,5 @@
 ﻿<template>
     <template is="dom-bind">
-        <section>
             <style>
                 google-map {
                     height: 400px;
@@ -14,7 +13,7 @@
                 <template is="dom-repeat" items="{{model.Sener}}">
                     <google-map-marker latitude="{{item.Lat}}"
                                        longitude="{{item.Lng}}"
-                                       title="{{item.Inf}}">
+                                       title="{{item.EXD}}">
                     </google-map-marker>
                 </template>
 
@@ -37,7 +36,5 @@
                                    api-key="AIzaSyDPkEs-_HJWKejZ5qLXTmXXfVFnAXJmnt0">
             </google-map-directions>
 -->
-        </section>
-
     </template>
 </template>

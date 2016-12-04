@@ -92,12 +92,16 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SignIOPage.json.cs">
+      <DependentUpon>SignIOPage.json</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <Content Include="wwwroot\InvoiceDemo\GmapPage.html" />
     <Content Include="wwwroot\InvoiceDemo\InvoicePage.html" />
     <Content Include="wwwroot\InvoiceDemo\InvoicesPage.html" />
     <Content Include="wwwroot\InvoiceDemo\MasterPage.html" />
+    <Content Include="wwwroot\InvoiceDemo\SignIOPage.html" />
     <Content Include="wwwroot\InvoiceDemo\style.css" />
   </ItemGroup>
   <ItemGroup>
@@ -131,6 +135,17 @@
       <ProductName>.NET Framework 3.5 SP1</ProductName>
       <Install>false</Install>
     </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\SDB\SDB.csproj">
+      <Project>{038d86cc-cbf6-4660-bf70-730e10645448}</Project>
+      <Name>SDB</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <TypedJSON Include="SignIOPage.json">
+      <Generator>MsBuild:Compile</Generator>
+    </TypedJSON>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="$(StarcounterBin)\Starcounter.MsBuild.targets" />

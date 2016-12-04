@@ -1,8 +1,19 @@
-﻿using Starcounter;
+﻿using System;
+using Starcounter;
+
+[Database]
+public class User
+{
+    public string FirstName;
+    public string LastName;
+    public string Password;
+    public string FullName { get { return FirstName + " " + LastName; } }
+}
 
 [Database]
 public class Gmap
 {
+    public DateTime EXD;
     public string Lat;
     public string Lng;
     public string Inf;
@@ -46,4 +57,36 @@ public class InvoiceRow {
     public InvoiceRow() {
         Quantity = 1;
     }
+}
+
+[Database]
+public class Customer
+{
+    public string Name;
+}
+
+public class PrivateCustomer : Customer
+{
+    public string Gender;
+}
+
+public class CorporateCustomer : Customer
+{
+    public string VatNumber;
+}
+
+[Database]
+public class TA
+{
+    public string fa;
+}
+
+public class TB : TA
+{
+    public string fb;
+}
+
+public class TC : TB
+{
+    public string fc;
 }

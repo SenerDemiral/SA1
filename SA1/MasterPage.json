@@ -1,6 +1,10 @@
 {
   "Html": "",
-  "RecentInvoices": {},
-  "FocusedInvoice": {},
-  "GmapHtml": {}
+  "RecentInvoices": { },
+  "FocusedInvoice": { },
+  "GmapHtml": { },
+  "SignIO": { },
+  "sia": false, // Authorized
+  "sif": "",    // FullName
+  "sii": ""     // ID
 }

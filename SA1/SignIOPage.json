@@ -1,0 +1,9 @@
+{
+  "Html": "/InvoiceDemo/SignIOPage.html",
+  "sin$": "", // SignIn Name
+  "sip$": "", // SignIn Password
+  "sic$": 0, // SignIn Click
+  "soc$": 0, // SignOut Click
+  "siv": false,  // SignIn Visible
+  "RedirectUrl$": ""
+}

@@ -4,7 +4,7 @@ attached to `model` property -->
     <!-- Consume this model in Polymer's autobinding element -->
     <template is="dom-bind">
         <template is="dom-if" if="{{model.InvoiceNo}}">
-            <h3>Invoice  ###<span>{{model.InvoiceNo}}</span></h3>
+            <h3>Invoice  #<span>{{model.InvoiceNo}}</span></h3>
         </template>
         <template is="dom-if" if="{{!model.InvoiceNo}}">
             <h3>Add new invoice</h3>
@@ -12,8 +12,10 @@ attached to `model` property -->
 
         <div class="subtitle">
             <label>Customer name</label>
-            <!-- Display Name$ and bind it for editing -->
+            <!-- Display Name$ and bind it for editing 
             <input type="text" value="{{model.Name$::input}}" />
+            -->
+            <input type="text" value="{{model.Name$::change}}" />
         </div>
 
         <div class="invoice-items">
@@ -36,7 +38,7 @@ attached to `model` property -->
                     <div class="invoice-item">
                         <!-- Display item properties and bind them for editing -->
                         <div class="invoice-item-cell">
-                            <input type="text" value="{{item.Description$::input}}" />
+                            <input type="text" value="{{item.Description$::change}}" />
                         </div>
                         <div class="invoice-item-cell">
                             <input class="number" type="text" value="{{item.Quantity$::input}}" />
@@ -70,6 +72,6 @@ attached to `model` property -->
 
         </div>
 
-        <link is="puppet-redirect" history url="{{model.RedirectUrl$}}">
+        <link is="puppet-redirect" history url$="{{model.RedirectUrl$}}">
     </template>
 </template>

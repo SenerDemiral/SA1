@@ -7,9 +7,10 @@ partial class BElement : Json
     protected override void HasChanged(Starcounter.Templates.TValue property)
     {
         //Transaction.Commit();
-        base.HasChanged(property);
+        base.HasChanged( property );
 
         ((this.Parent as Starcounter.Arr<BElement>).Parent as InvoicePage).Pending++;
+
     }
 }
 */
@@ -17,13 +18,13 @@ partial class InvoicePage : Json, IBound<Invoice>
 {
     public event EventHandler Saved;
     public event EventHandler Deleted;
-
+    /*
     protected override void OnData()
     {
         base.OnData();
         Console.WriteLine("OnData ");
     }
-
+    
     protected override void HasChanged(Starcounter.Templates.TValue property)
     {
         //Transaction.Commit();
@@ -31,21 +32,21 @@ partial class InvoicePage : Json, IBound<Invoice>
         //Pending++;
         Console.WriteLine("Padding");
     }
-
+    */
     void Handle(Input.Name inp)
     {
         var a = inp.OldValue;
         var b = inp.Value;
+        var c = inp.Template;
         Pending++;
     }
 
     void Handle(Input.AddRow action)
     {
-        new InvoiceRow()
-        {
+        new InvoiceRow() {
             Invoice = Data
         };
-        
+
         Pending++;
 
         Items[0].Quantity = 2;
@@ -54,26 +55,29 @@ partial class InvoicePage : Json, IBound<Invoice>
     void Handle(Input.Save action)
     {
         bool isUnsavedInvoice = (InvoiceNo == 0); // A new invoice
-        if (isUnsavedInvoice)
-        {
+        if (isUnsavedInvoice) {
             InvoiceNo = (int)Db.SQL<long>("SELECT max(i.InvoiceNo) FROM Invoice i").First + 1;
         }
 
         Transaction.Commit();
         OnSaved();
-        
+
         Pending = 0;
 
         //redirect to the new URL
         RedirectUrl = "/invoicedemo/invoices/" + InvoiceNo;
+
+        var a = Data.Items;
+        var b = Items;
+
+
     }
 
     void Handle(Input.Cancel action)
     {
         bool isUnsavedInvoice = (InvoiceNo == 0); // A new invoice
         Transaction.Rollback(); // Bir onceki Commit'den sonrakiler iptal
-        if (isUnsavedInvoice)
-        {
+        if (isUnsavedInvoice) {
             Data = new Invoice();
         }
     }
@@ -89,8 +93,7 @@ partial class InvoicePage : Json, IBound<Invoice>
         // before this bug is fixed: https://github.com/Starcounter/Starcounter/issues/2814
         this.Data = null;
 
-        foreach (var row in Data.Items)
-        {
+        foreach (var row in invoice.Items) {
             row.Delete();
         }
 
@@ -105,16 +108,14 @@ partial class InvoicePage : Json, IBound<Invoice>
 
     protected void OnDeleted()
     {
-        if (this.Deleted != null)
-        {
+        if (this.Deleted != null) {
             this.Deleted(this, EventArgs.Empty);
         }
     }
 
     protected void OnSaved()
     {
-        if (this.Saved != null)
-        {
+        if (this.Saved != null) {
             this.Saved(this, EventArgs.Empty);
         }
     }
@@ -131,9 +132,5 @@ partial class InvoicePage : Json, IBound<Invoice>
             var page = Parent.Parent as InvoicePage;
             page.Pending++;
         }
-
-
     }
-
-
 }

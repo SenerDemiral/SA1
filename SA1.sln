@@ -5,6 +5,10 @@ VisualStudioVersion = 14.0.25420.1
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SA1", "SA1\SA1.csproj", "{11C60E31-D13A-45F0-902A-799973FDFBF2}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SDB", "SDB\SDB.csproj", "{038D86CC-CBF6-4660-BF70-730E10645448}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GmapApp", "GmapApp\GmapApp.csproj", "{090F69FD-6BD8-4B7B-8367-7090FA3FC982}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|x64 = Debug|x64
@@ -15,6 +19,14 @@ Global
 		{11C60E31-D13A-45F0-902A-799973FDFBF2}.Debug|x64.Build.0 = Debug|x64
 		{11C60E31-D13A-45F0-902A-799973FDFBF2}.Release|x64.ActiveCfg = Release|x64
 		{11C60E31-D13A-45F0-902A-799973FDFBF2}.Release|x64.Build.0 = Release|x64
+		{038D86CC-CBF6-4660-BF70-730E10645448}.Debug|x64.ActiveCfg = Debug|x64
+		{038D86CC-CBF6-4660-BF70-730E10645448}.Debug|x64.Build.0 = Debug|x64
+		{038D86CC-CBF6-4660-BF70-730E10645448}.Release|x64.ActiveCfg = Release|x64
+		{038D86CC-CBF6-4660-BF70-730E10645448}.Release|x64.Build.0 = Release|x64
+		{090F69FD-6BD8-4B7B-8367-7090FA3FC982}.Debug|x64.ActiveCfg = Debug|x64
+		{090F69FD-6BD8-4B7B-8367-7090FA3FC982}.Debug|x64.Build.0 = Debug|x64
+		{090F69FD-6BD8-4B7B-8367-7090FA3FC982}.Release|x64.ActiveCfg = Release|x64
+		{090F69FD-6BD8-4B7B-8367-7090FA3FC982}.Release|x64.Build.0 = Release|x64
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

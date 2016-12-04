@@ -20,7 +20,8 @@
                     <template is="imported-template">
                     -->
                     <div class="invoice-item">
-                        <!-- Interpolate string using computed binding -->
+                        <!-- Interp
+                            olate string using computed binding -->
                         <div class="invoice-item-cell readonlycell">
                             <a href="{{item.Url}}">{{item.InvoiceNo}}</a>
                         </div>
@@ -34,7 +35,7 @@
                 </template>
             </div>
             <div>
-                <div>{{model.latitude}}</div>
+                <div>{{model}}</div>
                 <div>{{model.Html}}</div>
                 <template is="dom-repeat" items="{{model.Invoices}}">
                     <div><span>{{item.Name}}</span></div>
